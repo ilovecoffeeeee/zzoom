@@ -1,0 +1,17 @@
+{
+  "name": "zzoom",
+  "version": "1.0.0",
+  "description": "Zoom Clone using NodeJs, WebRTC and Websockets.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilovecoffeeeee/zzoom.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilovecoffeeeee/zzoom/issues"
+  },
+  "homepage": "https://github.com/ilovecoffeeeee/zzoom#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
