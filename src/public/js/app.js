@@ -1,18 +1,29 @@
-const socket = new WebSocket(`ws://${window.location.host}`);
+//Front
+const socket = io();
+const welcome = document.getElementById("welcome");
+const form = welcome.querySelector("form");
+const room = document.getElementById("room");
+
+room.hidden = true;
+
+let roomName;
+
+function showRoom() {
+    welcome.hidden = true;
+    room.hidden = false;
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName}`;
+};
+
+function handleRoomSubmit(event){
+    event.preventDefault();
+    const input = form.querySelector("input");
+    socket.emit("enter_room", input.value, showRoom);
+    roomName = input.value;
+    input.value = "";
+};
+
+form.addEventListener("submit", handleRoomSubmit);
 
 
-socket.addEventListener("open", () => {
-    console.log("Connected to Server 🍎")
-});
 
-socket.addEventListener("message", (message) => {
-    console.log("New message: ", message.data);
-})
-
-socket.addEventListener("close", () => {
-    console.log("Disconnected from Server 🦴")
-})
-
-setTimeout(() => {
-    socket.send("hello from the browser!")
-}, 10000);
